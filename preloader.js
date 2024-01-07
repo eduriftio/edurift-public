@@ -9,7 +9,7 @@ overlay.style.cssText = `
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, 0.9);
     z-index: 999;
 `;
 
@@ -31,7 +31,8 @@ document.body.appendChild(lottieContainer);
 
 // Function to display the Lottie animation
 function hideOverlay() {
-    lottieContainer.style.display = 'block';
+    lottieContainer.style.display = 'none';
+    overlay.style.display = 'none';
 }
 
 // Load the Lottie animation
@@ -46,4 +47,5 @@ const animationData = {
 const anim = lottie.loadAnimation(animationData);
 
 // Extend the timeout to see the animation for longer
+lottieContainer.style.display = 'block';
 setTimeout(hideOverlay, 3000); // 3 seconds for better visibility

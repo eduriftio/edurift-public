@@ -9,20 +9,21 @@ overlay.style.cssText = `
     left: 0;
     width: 100%;
     height: 100%;
-background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.2); // Further reduced opacity
     z-index: 999;
 `;
 
 const lottieContainer = document.createElement('div');
 lottieContainer.id = 'lottieContainer';
 lottieContainer.style.cssText = `
-    max-width: 100%;
-    max-height: 100%;
+    width: 300px; // Specify size
+    height: 300px; // Specify size
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    display: none;  // Only one display property is needed
+    display: none;
+    z-index: 1000; // Increased z-index
 `;
 
 // Append the elements to the body
@@ -30,20 +31,19 @@ document.body.appendChild(overlay);
 document.body.appendChild(lottieContainer);
 
 // Function to display the Lottie animation
-function hideOverlay() {
+function showLottieAnimation() {
     lottieContainer.style.display = 'block';
 }
 
 // Load the Lottie animation
 const animationData = {
     container: lottieContainer,
-    renderer: 'svg', // Use 'svg' or 'canvas' based on your preference
-    loop: true, // Set to true if you want the animation to loop
-    autoplay: true, // Set to true if you want the animation to start automatically
-    path: 'https://lottie.host/898dc4a0-cb88-4012-b3c8-87c16e40c720/BooefhvjAf.json', // Replace with the actual URL of your Lottie JSON file
+    renderer: 'svg',
+    loop: true,
+    autoplay: true,
+    path: 'https://lottie.host/898dc4a0-cb88-4012-b3c8-87c16e40c720/BooefhvjAf.json',
 };
 
 const anim = lottie.loadAnimation(animationData);
 
-// Extend the timeout to see the animation for longer
-setTimeout(hideOverlay, 3000); // 3 seconds for better visibility
+setTimeout(showLottieAnimation, 3000); // Adjust timing as needed

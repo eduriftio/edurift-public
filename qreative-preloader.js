@@ -9,7 +9,7 @@ overlay.style.cssText = `
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.9); // Semi-transparent overlay
     z-index: 999;
 `;
 
@@ -22,28 +22,33 @@ lottieContainer.style.cssText = `
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    display: none;  // Only one display property is needed
+    display: none; // Initially hidden
 `;
 
 // Append the elements to the body
 document.body.appendChild(overlay);
 document.body.appendChild(lottieContainer);
 
-// Function to display the Lottie animation
+// Function to hide the overlay and Lottie animation
 function hideOverlay() {
-    lottieContainer.style.display = 'block';
+    overlay.style.display = 'none';
+    lottieContainer.style.display = 'none';
 }
 
 // Load the Lottie animation
 const animationData = {
     container: lottieContainer,
-    renderer: 'svg', // Use 'svg' or 'canvas' based on your preference
-    loop: true, // Set to true if you want the animation to loop
-    autoplay: true, // Set to true if you want the animation to start automatically
-    path: 'https://lottie.host/0601ee91-22b3-4065-97e1-bb4385e3b9c3/530aBuaWwr.json', // Replace with the actual URL of your Lottie JSON file
+    renderer: 'svg',
+    loop: true, // Set this to true for looping
+    autoplay: true,
+    path: 'https://lottie.host/0601ee91-22b3-4065-97e1-bb4385e3b9c3/530aBuaWwr.json',
 };
 
 const anim = lottie.loadAnimation(animationData);
 
-// Extend the timeout to see the animation for longer
-setTimeout(hideOverlay, 3000); // 3 seconds for better visibility
+// Show the Lottie animation and overlay initially
+overlay.style.display = 'flex';
+lottieContainer.style.display = 'block';
+
+// Optionally, hide the overlay and Lottie animation after a delay
+// setTimeout(hideOverlay, 5000); // Adjust the duration as needed
